@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Blogging Like a Hacker
+title: Pruebas de encabezado
 tags: eso estudiante
 ---
 
