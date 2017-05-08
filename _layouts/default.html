@@ -5,13 +5,17 @@
 
   <body>
 
+    <!--  preloader start -->
+    <div id="tb-preloader">
+      <div class="tb-preloader-wave"></div>
+    </div>
+    <!-- preloader end -->
 
     <div class="wrapper">
       {% include header.html %}
       {{ content }}
+      {% include footer.html %}
     </div>
-
-    {% include footer.html %}
 
     <!-- inject:js -->
     <script src="assets/vendor/modernizr/modernizr.js"></script>
