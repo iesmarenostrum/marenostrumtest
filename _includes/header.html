@@ -6,8 +6,8 @@
       <nav class="menuzord js-primary-navigation" role="navigation" aria-label="Primary Navigation">
         
         <!--logo start-->
-        <a class="logo-brand " href="{{ "/" | relative_url}}">
-          <img class="retina" src="assets/img/logo.png" alt="{{ site.title | escape }}" />
+        <a class="logo-brand " href="{{ site.baseurl }}/">
+          <img class="retina" src="{{ site.baseurl }}/assets/img/logo.png" alt="{{ site.title | escape }}" />
         </a>
         <!--logo end-->
         
@@ -16,7 +16,7 @@
           {% for my_page in site.pages %}
           {% if my_page.title %}
           <li>
-            <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+            <a class="page-link" href="{{ site.baseurl }}{{ my_page.url }}">{{ my_page.title | escape }}</a>
           </li>
           {% endif %}
           {% endfor %}

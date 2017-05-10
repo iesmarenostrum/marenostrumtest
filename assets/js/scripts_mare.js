@@ -1,4 +1,7 @@
-;(function () {
+---
+---
+
+(function () {
   "use strict";
 
   var $document = $(document);
@@ -10,7 +13,7 @@
         return d.tokens;
       },
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      prefetch: '/search.json'
+      prefetch: '{{ site.baseurl }}/search.json'
     });
 
     var autocompletar = $('#prefetch .typeahead').typeahead(null, {
@@ -19,7 +22,7 @@
       source: bestPictures
     });
     autocompletar.on('typeahead:selected', function (evt, data) {
-      window.location = data.url;
+      window.location = '{{ site.baseurl }}/' + data.url;
     });
   });
 
