@@ -22,7 +22,7 @@
       source: bestPictures
     });
     autocompletar.on('typeahead:selected', function (evt, data) {
-      window.location = '{{ site.baseurl }}/' + data.url;
+      window.location = '{{ site.baseurl }}' + data.url;
     });
   });
 
