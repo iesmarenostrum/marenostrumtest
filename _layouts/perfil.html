@@ -27,7 +27,8 @@ layout: default
     <div class="row">
       <div class="feature-box-grid" >
         {% for post in site.posts%}
-        <div class="col-md-4" >
+        {% if post.tags contains 'estudiante' %}
+        <div class="col-md-4 {{post.tags | join: ' '}}" >
           <div class="featured-item border-box text-center">
             <div class="icon" >
               <i class="icon-lightbulb" >
@@ -38,9 +39,10 @@ layout: default
                 <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
               </h4>
             </div>
-            <div class="desc">{{post.desc}}  </div>
+            <div class="desc">{{post.excerpt}}  </div>
           </div>
         </div>
+        {% endif %}
         {% endfor %}
       </div>
     </div>
