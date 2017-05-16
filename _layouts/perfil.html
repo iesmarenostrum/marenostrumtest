@@ -26,8 +26,9 @@ layout: default
     </div>
     <div class="row">
       <div class="feature-box-grid" >
-        {% for post in site.tags[page.perfil] %}
-        <div class="col-md-4 {{post.tags | join: ' '}}" >
+        {% for doc in site.docs%}
+        {% if doc.tags contains page.perfil %}
+        <div class="col-md-4 {{doc.tags | join: ' '}}" >
           <div class="featured-item border-box text-center">
             <div class="icon" >
               <i class="icon-lightbulb" >
@@ -35,12 +36,13 @@ layout: default
             </div>
             <div class="title text-uppercase">
               <h4>
-                <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                <a href="{{ site.baseurl }}{{ doc.url }}">{{ doc.title }}</a>
               </h4>
             </div>
-            <div class="desc">{{post.excerpt}}  </div>
+            <div class="desc">{{doc.excerpt}}  </div>
           </div>
         </div>
+        {% endif %}
         {% endfor %}
       </div>
     </div>

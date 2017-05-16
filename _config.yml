@@ -31,3 +31,7 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path/
