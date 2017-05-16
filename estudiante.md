@@ -1,5 +1,5 @@
 ---
-layout: perfil
+layout: estudiante_principal
 title: Estudiante
 permalink: /estudiante
 ---

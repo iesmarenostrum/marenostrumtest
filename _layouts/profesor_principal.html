@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<!--page title start-->
+<section class="page-title mini-title ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="text-uppercase">{{page.title}}</h4>
+      </div>
+    </div>
+  </div>
+</section>
+<!--page title end-->
+
+<!--section-->
+<div class="page-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" >
+        <div id="prefetch">
+          <input class="form-control typeahead" type="text" placeholder="Buscar información de Estudiantes...">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="feature-box-grid" >
+        {% for post in site.posts%}
+        {% if post.tags contains 'profesor' %}
+        <div class="col-md-4 {{post.tags | join: ' '}}" >
+          <div class="featured-item border-box text-center">
+            <div class="icon" >
+              <i class="icon-lightbulb" >
+              </i>
+            </div>
+            <div class="title text-uppercase">
+              <h4>
+                <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+              </h4>
+            </div>
+            <div class="desc">{{post.excerpt}}  </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!--section-->
