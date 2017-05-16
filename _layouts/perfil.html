@@ -20,14 +20,13 @@ layout: default
     <div class="row">
       <div class="col-md-12" >
         <div id="prefetch">
-          <input class="form-control typeahead" type="text" placeholder="Buscar información de Estudiantes...">
+          <input class="form-control typeahead" type="text" placeholder="Buscar información de {{page.perfil}}...">
         </div>
       </div>
     </div>
     <div class="row">
       <div class="feature-box-grid" >
-        {% for post in site.posts%}
-        {% if post.tags contains 'profesor' %}
+        {% for post in site.tags[page.perfil] %}
         <div class="col-md-4 {{post.tags | join: ' '}}" >
           <div class="featured-item border-box text-center">
             <div class="icon" >
@@ -42,7 +41,6 @@ layout: default
             <div class="desc">{{post.excerpt}}  </div>
           </div>
         </div>
-        {% endif %}
         {% endfor %}
       </div>
     </div>

@@ -1,7 +1,8 @@
 ---
-layout: profesor_principal
+layout: perfil 
 title: Profesor
 permalink: /profesor
+perfil: profesor
 ---
 
 Ésta es la web para profesores. Bienvenidos!!!

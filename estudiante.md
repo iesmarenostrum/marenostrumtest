@@ -1,7 +1,8 @@
 ---
-layout: estudiante_principal
+layout: perfil
 title: Estudiante
 permalink: /estudiante
+perfil: estudiante
 ---
 
 Ésta es la web para estudiantes. Bienvenidos!!!
