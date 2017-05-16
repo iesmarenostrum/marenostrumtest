@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: articulo
 title: Horarios
 tags: estudiante horarios
 ---

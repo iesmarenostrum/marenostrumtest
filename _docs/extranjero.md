@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: articulo
 title: Internacional
 tags: estudiante extranjero europa erasmus
 ---

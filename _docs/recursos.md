@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: articulo
 title: Recursos
 tags: estudiante recursos correo perfil
 ---

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: articulo
 title: Becas
 tags: estudiante becas
 ---

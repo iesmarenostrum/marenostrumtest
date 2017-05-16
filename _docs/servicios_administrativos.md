@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: articulo
 title: Servicios administrativos
 tags: estudiante administracion titulos certificados tasas
 ---
