@@ -1,0 +1,70 @@
+---
+layout: default
+---
+
+<!--page title start-->
+<section class="page-title mini-title ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="text-uppercase">{{page.title}}</h4>
+      </div>
+    </div>
+  </div>
+</section>
+<!--page title end-->
+
+<!--section-->
+<div class="page-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <dl class="accordion">
+          {% assign procesos_group = site.posts | where_exp:"item", "item.proceso == page.proceso " | group_by:"convocatoria" | sort: 'name' %}
+          {% for posts_convocatoria in procesos_group reversed %}
+          {% assign posts_fase = posts_convocatoria.items | group_by:"fase" %}
+          <dt>
+            <a href="">{{posts_convocatoria.name}}</a>
+          </dt>
+          <dd>
+            <section class="normal-tabs line-tab">
+              <ul class="nav nav-tabs">
+                {% for fase in posts_fase %}
+                <li>
+                  <a data-toggle="tab" href="#tab-{{posts_convocatoria.name | slugify}}-{{fase.name | slugify}}">{{fase.name}}</a>
+                </li>
+                {% endfor %}
+              </ul>
+              <div class="panel-body">
+                <div class="tab-content">
+                  {% for fase in posts_fase %}
+                  <div id="tab-{{posts_convocatoria.name | slugify }}-{{fase.name | slugify}}" class="tab-pane">
+                    {% assign posts_grupo= fase.items | group_by:"grupo" %}
+                    <dl class="toggle time-line {{fase.name | slugify}}">
+                      {% for grupo in posts_grupo%}
+                      <dt>
+                        <a href="">{{grupo.name}}</a>
+                      </dt>
+                      <dd>
+                        {% for post in grupo.items reversed %}
+                        <div>
+                          {{post.content}}
+                        </div>
+                        {% endfor %}
+                      </dd>
+                      {% endfor %}
+                    </dl>
+                  </div>
+
+                  {% endfor %}
+                </div> 
+              </div>
+            </section>
+          </dd>
+          {% endfor %}
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
+<!--section-->
