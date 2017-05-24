@@ -1,0 +1,10 @@
+secciones:
+  -
+      carpeta: documentacion
+      texto: Documentación
+  -
+      carpeta: resultado
+      texto: Resultado
+texto:
+  fichero: informacion
+  texto: Descripción

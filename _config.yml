@@ -35,3 +35,5 @@ collections:
   docs:
     output: true
     permalink: /:collection/:path/
+  procesos:
+    output: true

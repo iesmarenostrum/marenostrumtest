@@ -1,5 +1,5 @@
 ---
-layout: proceso
+layout: proceso_v2
 title: Servicios administrativos
 tags: estudiante administracion titulos certificados tasas
 proceso: matricula
