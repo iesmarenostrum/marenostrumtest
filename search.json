@@ -4,7 +4,6 @@
 [
   {% for post in site.docs %}
   {% assign title = post.title | split:' ' %}
-  {% assign date = post.date | date_to_long_string | split:' ' %}
   {
     "value": "{{ post.title }}",
     "tokens": [
