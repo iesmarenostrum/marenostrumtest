@@ -26,7 +26,7 @@ layout: default
             <a href="">{{convocatoria.name}}</a>
           </dt>
           <dd>
-            <section class="round-tabs text-center">
+            <section class="square-tabs text-center">
               <ul class="nav nav-pills">
                 {% for grupo in grupos %}
                 <li>
@@ -34,7 +34,7 @@ layout: default
                 </li>
                 {% endfor %}
               </ul>
-              <div class="panel-body">
+              <div class="panel-body text-left">
                 <div class="tab-content">
                   {% for grupo in grupos %}
                   <div id="tab-{{grupos.name | slugify }}-{{grupo.name | slugify}}" class="tab-pane">
