@@ -1,0 +1,17 @@
+---
+---
+
+[
+  {% for dato in site.data.procesos %}
+  {% assign title = dato.proceso | append: dato.grupo | append: dato.fase %}
+  {
+    "content": "{{ title }}",
+    "start": "{{ dato.fecha_inicio }}",
+    "end": "{{ dato.fecha_fin}}",
+    {% if dato.provisional == 'si' %}
+    "type": "background",
+    {% endif %}
+    "section": "{{dato.section}}"
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
