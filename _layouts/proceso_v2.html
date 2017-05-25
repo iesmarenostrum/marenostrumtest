@@ -18,44 +18,40 @@ layout: default
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <dl class="accordion">
+        <dl class="toggle time-line">
           {% assign procesos = site.data.procesos | where_exp:"item", "item.proceso == page.proceso " | group_by:"convocatoria" | sort: 'name' %}
           {% for convocatoria in procesos reversed %}
-          {% assign fases = convocatoria.items | group_by:"fase" %}
+          {% assign grupos = convocatoria.items | group_by:"grupo" %}
           <dt>
             <a href="">{{convocatoria.name}}</a>
           </dt>
           <dd>
-            <section class="border-tabs">
-              <ul class="nav nav-tabs">
-                {% for fase in fases %}
+            <section class="round-tabs text-center">
+              <ul class="nav nav-pills">
+                {% for grupo in grupos %}
                 <li>
-                  <a data-toggle="tab" href="#tab-{{fases.name | slugify}}-{{fase.name | slugify}}">{{fase.name}}</a>
+                  <a data-toggle="tab" href="#tab-{{grupos.name | slugify}}-{{grupo.name | slugify}}">{{grupo.name}}</a>
                 </li>
                 {% endfor %}
               </ul>
               <div class="panel-body">
                 <div class="tab-content">
-                  {% for fase in fases %}
-                  <div id="tab-{{fases.name | slugify }}-{{fase.name | slugify}}" class="tab-pane">
-                    {% assign grupos = fase.items | group_by:"grupo" %}
-                    <dl class="toggle time-line {{fase.name | slugify}}">
-                      {% for grupo in grupos %}
+                  {% for grupo in grupos %}
+                  <div id="tab-{{grupos.name | slugify }}-{{grupo.name | slugify}}" class="tab-pane">
+                    {% assign fases = grupo.items | group_by:"fase" %}
+                    <dl class="accordion {{grupo.name | slugify}}">
+                      {% for fase in fases %}
                       <dt>
-                        <a href="">{{grupo.name}}</a>
+                        <a href="">{{fase.name}}</a>
                       </dt>
                       <dd>
-                        {% for post in grupo.items reversed %}
+                        {% for post in fase.items reversed %}
                         {%assign path_fase = page.proceso | append: "/" | append: convocatoria.name | append: "/" | append: grupo.name | append: "/" | append: fase.name %} 
-                        {%assign path_descripcion = page.proceso | append: "/" | append: convocatoria.name | append: "/" | append: grupo.name | append: "/" | append: fase.name | append: "/" | append: site.data.secciones.texto.fichero %} 
                         <div>
                           <section class="border-tabs">
                             <ul class="nav nav-tabs">
-                              <li>
-                                <a data-toggle="tab" href="#tab-{{path_descripcion | slugify}}">{{ site.data.secciones.texto.texto}}</a>
-                              </li>
                               {% for seccion in site.data.secciones.secciones %}
-                              {%assign path_seccion = page.proceso | append: "/" | append: convocatoria.name | append: "/" | append: grupo.name | append: "/" | append: fase.name | append: "/" | append: seccion.carpeta %} 
+                              {% assign path_seccion = path_fase | append: "/" | append: seccion.nombre %}
                               <li>
                                 <a data-toggle="tab" href="#tab-{{path_seccion | slugify}}">{{seccion.texto}}</a>
                               </li>
@@ -63,20 +59,11 @@ layout: default
                             </ul>
                               <div class="panel-body">
                                 <div class="tab-content">
-                                  <div id="tab-{{path_descripcion | slugify}}" class="tab-pane">
-                                    {% for col in site.collections %}
-                                    {% assign documentos = col.docs | where_exp: "item", "item.path contains path_descripcion"%}
-                                    {% for doc in documentos %}
-                                    <p>
-                                      {{ doc.content }}
-                                    </p>
-                                    {% endfor %}
-                                    {% endfor %}
-                                  </div>
                                   {% for seccion in site.data.secciones.secciones %}
-                                  {%assign path_seccion = page.proceso | append: "/" | append: convocatoria.name | append: "/" | append: grupo.name | append: "/" | append: fase.name | append: "/" | append: seccion.carpeta %} 
+                                  {% assign path_seccion = path_fase | append: "/" | append: seccion.nombre %}
                                   <div id="tab-{{path_seccion | slugify}}" class="tab-pane">
                                     {% for col in site.collections %}
+                                    {% if seccion.carpeta %}
                                     {% assign documentos = col.files | where_exp: "item", "item.path contains path_seccion "%}
                                     {% for doc in documentos %}
                                     <p>
@@ -88,6 +75,14 @@ layout: default
                                       <a href="{{site.baseurl}}/{{col.label}}/{{path_seccion}}/{{doc.name}}">{{doc.name}}</a>
                                     </p>
                                     {% endfor %}
+                                    {% else %}
+                                    {% assign documentos = col.docs | where_exp: "item", "item.path contains path_seccion"%}
+                                    {% for doc in documentos %}
+                                    <p>
+                                      {{ doc.content }}
+                                    </p>
+                                    {% endfor %}
+                                    {% endif %}
                                     {% endfor %}
                                   </div>
                                   {% endfor %}

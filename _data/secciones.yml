@@ -1,10 +1,13 @@
 secciones:
   -
-      carpeta: documentacion
-      texto: Documentación
+    nombre: informacion
+    texto: Descripción
+    carpeta: no
   -
-      carpeta: resultado
-      texto: Resultado
-texto:
-  fichero: informacion
-  texto: Descripción
+    nombre: documentacion
+    texto: Documentación
+    carpeta: yes
+  -
+    nombre: resultado
+    texto: Resultado
+    carpeta: yes
