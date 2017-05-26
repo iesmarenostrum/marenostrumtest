@@ -2,3 +2,4 @@ proceso,convocatoria,fase,grupo,fecha_inicio,fecha_fin,provisional
 matricula,2017-2018,1_vacantes,1eso,2017-06-01,2017-06-30,si
 matricula,2017-2018,1_vacantes,fp,2017-06-01,2017-06-21,no
 matricula,2017-2018,2_preinscripcion,1eso,2017-06-21,2017-06-30,no
+matricula,2017-2018,3_cosapuntual,1eso,2017-07-01,,

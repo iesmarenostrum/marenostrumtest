@@ -7,7 +7,9 @@
   {
     "content": "{{ title }}",
     "start": "{{ dato.fecha_inicio }}",
+    {% if dato.fecha_fin %}
     "end": "{{ dato.fecha_fin}}",
+    {% endif %}
     {% if dato.provisional == 'si' %}
     "type": "background",
     {% endif %}
