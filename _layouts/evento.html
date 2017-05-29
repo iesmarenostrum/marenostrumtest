@@ -1,0 +1,61 @@
+---
+layout: default
+---
+
+<!--page title start-->
+<section class="page-title mini-title ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="text-uppercase">{{page.title}}</h4>
+      </div>
+    </div>
+  </div>
+</section>
+<!--page title end-->
+
+<!--body content start-->
+<section class="body-content page-content">
+  <div class="container">
+    <div class="row">
+      <div class="m-bot-100">
+
+        <div class="col-md-8">
+          <div class="full-width">
+            {% assign last_cat = page.categories | last %}
+            {% assign first_cat = post.categories | first %}
+            {% assign photos_subpath = first_cat | append: "/" | append: last_cat %}
+            {% assign photos_list = site.static_files | where_exp: "item", "item.path contains photos_subpath" %}
+
+            <!--carousel thumb-->
+            <div class="post-slider-thumb post-img text-center">
+              <ul class="slides">
+                {% for photo in photos_list %}
+                <li data-thumb="{{ site.baseurl }}{{photo.path}}">
+                  <a href="javascript:;" title="{{page.title}}">
+                    <img src="{{ site.baseurl }}{{photo.path}}" alt="">
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <!--carousel thumb-->
+
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="heading-title-side-border text-left">
+            <h4 class="text-uppercase">{{page.title}}</h4>
+            <div class="title-border-container">
+              <div class="title-border"></div>
+            </div>
+          </div>
+
+          {{ content }}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
