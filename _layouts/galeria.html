@@ -1,0 +1,79 @@
+---
+layout: default
+---
+
+<!--page title start-->
+<section class="page-title mini-title ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="text-uppercase">{{page.title}}</h4>
+      </div>
+    </div>
+  </div>
+</section>
+<!--page title end-->
+<!--body content start-->
+<section class="body-content page-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!--filter-->
+        <!-- <div class="text-center"> -->
+        <!-- <ul class="portfolio-filter"> -->
+        <!-- <li class="active"><a href="#" data-filter="*"> All</a> -->
+        <!-- </li> -->
+        <!-- <li><a href="#" data-filter=".cat1">printing</a> -->
+        <!-- </li> -->
+        <!-- <li><a href="#" data-filter=".cat2">Web</a> -->
+        <!-- </li> -->
+        <!-- <li><a href="#" data-filter=".cat3">illustration</a> -->
+        <!-- </li> -->
+        <!-- <li><a href="#" data-filter=".cat4">media</a> -->
+        <!-- </li> -->
+        <!-- <li><a href="#" data-filter=".cat5">crafts</a> -->
+        <!-- </li> -->
+        <!-- </ul> -->
+        <!-- </div> -->
+        <!--filter-->
+
+        <div class="portfolio portfolio-with-title portfolio-masonry col-4">
+          {% assign posts_eventos = site.posts | where: "categories","eventos" %}
+          {% for post in posts_eventos %}
+          {% assign last_cat = post.categories | last %}
+          {% assign first_cat = post.categories | first %}
+          {% assign photos_subpath = first_cat | append: "/" | append: last_cat %}
+          {% assign photos_list = site.static_files | where_exp: "item", "item.path contains photos_subpath" %}
+          <div class="portfolio-item">
+            <div class="thumb">
+              <div class="portfolio-slider-alt">
+                <ul class="slides">
+                  {% for photo in photos_list %}
+                  <li>
+                    <a href="{{ site.baseurl }}{{photo.path}}" title="{{ post.title }}">
+                      <img src="{{ site.baseurl }}{{photo.path}}" alt="">
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="portfolio-hover">
+                <div class="action-btn">
+                  <a href="#" title="{{ post.title }}"> <i class="icon-basic_magnifier"></i> 
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-title">
+              <h4><a href="{{ site.baseurl }}{{ post.url }}" title="lighox view">{{post.title}} <i class="icon-basic_link"></i></a></h4>
+              <p>{{ post.date | date: "%d-%m-%Y"}}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+          
